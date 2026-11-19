@@ -43,7 +43,7 @@ function PhoneFrame() {
         <div className="phone-notch" aria-hidden="true" />
         <div className="phone-screen">
           <img
-            src="/app-screen.png"
+            src="/app-screen.jpg"
             alt="Экрани барнома"
             onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
           />
