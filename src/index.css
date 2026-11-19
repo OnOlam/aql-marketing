@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a1628;
+  --card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+  --warm: #f2b84b;
+  --coral: #ee6a58;
+  --teal: #2fd1a8;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(ellipse at top, #1a2f4a 0%, #0a1628 50%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; border-radius: 8px; font-weight: 600; transition: opacity 0.2s;
+}
+.btn:hover:not(:disabled) { opacity: 0.9; }
+.btn-warm { background: var(--warm); color: #0a1628; }
+.btn-ghost { border: 1px solid rgba(255, 255, 255, 0.25); color: var(--text); background: transparent; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.divider {
+  text-align: center; color: var(--warm); font-size: 12px; letter-spacing: 8px;
+  margin: 40px 0; opacity: 0.6; user-select: none;
+}
+
+.field {
+  width: 100%; padding: 12px 14px; border-radius: 8px; color: var(--text);
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.field::placeholder { color: rgba(255, 255, 255, 0.4); }
+
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--warm); outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
