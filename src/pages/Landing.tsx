@@ -1,5 +1,5 @@
 import { CheckSquare, BookOpen, Sparkles, Heart, Calendar, Timer, Check, Crown, Zap, Users, Shield, Download, Smartphone, Monitor, Laptop } from 'lucide-react'
-import { Reveal, Divider, Section, Logo, PhoneMock } from '../components/ui'
+import { Reveal, Divider, Section, Logo } from '../components/ui'
 import { useActiveUsers } from '../lib/firebase'
 import { APK_URL, WIN_URL, MAC_URL, CONTACT_EMAIL } from '../lib/config'
 
@@ -35,14 +35,32 @@ const community = [
   { icon: Heart, title: 'Саломатии худро', text: 'Назорат кунед.' },
 ]
 
+/** Телефон рамкаи ҳақиқӣ: экрани барнома /public/app-screen.png-ро нишон медиҳад */
+function PhoneFrame() {
+  return (
+    <div className="phone-float">
+      <div className="phone">
+        <div className="phone-notch" aria-hidden="true" />
+        <div className="phone-screen">
+          <img
+            src="/app-screen.png"
+            alt="Экрани барнома"
+            onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Landing() {
   const { value, state } = useActiveUsers()
 
   return (
     <main id="top">
       {/* 1. Hero */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-8 pt-12 sm:pt-20 md:grid-cols-[1.2fr_1fr]">
-        <Reveal>
+      <section className="mx-auto flex max-w-6xl flex-col gap-12 px-5 pb-8 pt-12 sm:pt-20 md:flex-row md:items-center md:justify-between">
+        <Reveal className="md:flex-1">
           <h1 className="font-serif text-[2.25rem] font-bold leading-tight sm:text-5xl">Интизоми Мақсаднок</h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed" style={muted}>
             Мақсадҳоятонро ба одатҳои ҳаррӯза табдил диҳед. Вазифа, дониш ва саломатӣ — дар як ҷой, бо забони модарӣ.
@@ -52,7 +70,7 @@ export default function Landing() {
             <a href="#basics" className="btn btn-ghost">Маълумоти бештар</a>
           </div>
         </Reveal>
-        <Reveal index={2}><PhoneMock /></Reveal>
+        <Reveal index={2} className="shrink-0 self-center"><PhoneFrame /></Reveal>
       </section>
 
       <Divider />
